@@ -76,7 +76,5 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY configs/crontab /var/spool/cron/crontabs/lpar2rrd
 RUN chmod 600 /var/spool/cron/crontabs/lpar2rrd && chown lpar2rrd.crontab /var/spool/cron/crontabs/lpar2rrd
 
-COPY *-setup.sh /
-
 ENTRYPOINT [ "/startup.sh" ]
 
