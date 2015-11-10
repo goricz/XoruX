@@ -4,7 +4,7 @@ if [ -f /firstrun ]
 then
     # remote syslog server to docker host
     SYSLOG=`netstat -rn|grep ^0.0.0.0|awk '{print $2}'`
-    echo "*.*	@$SYSLOG" > /etc/rsyslog.d/50-default.conf
+    echo "*.* @$SYSLOG" > /etc/rsyslog.d/50-default.conf
 
     # Start syslog server to see something
     /etc/init.d/rsyslog start
@@ -24,6 +24,9 @@ then
     rm -r /home/lpar2rrd/lpar2rrd-$LPAR_VER
     su - lpar2rrd -c "cd /home/stor2rrd/stor2rrd-$STOR_VER/; yes '' | ./install.sh"
     rm -r /home/lpar2rrd/lpar2rrd-$STOR_VER
+
+    # enable LPAR2RRD daemon on default port (8162)
+    sed -i "s/LPAR2RRD_AGENT_DAEMON\=0/LPAR2RRD_AGENT_DAEMON\=1/g" /home/lpar2rrd/lpar2rrd/etc/lpar2rrd.cfg
 
     # clean up
     rm /firstrun
