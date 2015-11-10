@@ -69,12 +69,16 @@ ADD stor2rrd-$STOR_VER.tar /home/stor2rrd/
 
 EXPOSE 80 443 8162
 
-COPY startup.sh /startup.sh
-RUN chmod +x /startup.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY configs/crontab /var/spool/cron/crontabs/lpar2rrd
 RUN chmod 600 /var/spool/cron/crontabs/lpar2rrd && chown lpar2rrd.crontab /var/spool/cron/crontabs/lpar2rrd
+
+# patch for timezone settings - remove with next version
+COPY patches/tz.pl /home/lpar2rrd/
+
+COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 ENTRYPOINT [ "/startup.sh" ]
 
