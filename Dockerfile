@@ -43,7 +43,7 @@ RUN apt-get clean
 # setup default user
 RUN useradd lpar2rrd -U -s /bin/bash -m
 RUN echo 'lpar2rrd:xorux4you' | chpasswd
-RUN echo '%lpar2rrd ALL=(ALL) ALL' >> /etc/sudoers
+RUN echo '%lpar2rrd ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN mkdir /home/stor2rrd \
     && mkdir /home/lpar2rrd/stor2rrd \
     && ln -s /home/lpar2rrd/stor2rrd /home/stor2rrd \
