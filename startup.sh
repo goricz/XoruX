@@ -25,8 +25,16 @@ then
     su - lpar2rrd -c "cd /home/stor2rrd/stor2rrd-$STOR_VER/; yes '' | ./install.sh"
     rm -r /home/lpar2rrd/lpar2rrd-$STOR_VER
 
+    mv /home/lpar2rrd/tz.pl /home/lpar2rrd/bin/lpar2rrd.pl
+    chown lpar2rrd /home/lpar2rrd/bin/lpar2rrd.pl
+
     # enable LPAR2RRD daemon on default port (8162)
     sed -i "s/LPAR2RRD_AGENT_DAEMON\=0/LPAR2RRD_AGENT_DAEMON\=1/g" /home/lpar2rrd/lpar2rrd/etc/lpar2rrd.cfg
+    # set DOCKER env var
+    echo "export DOCKER=1" >> /home/lpar2rrd/lpar2rrd/etc/.magic
+
+    # enable timezone change via GUI
+    chmod 666 /etc/timezone
 
     # clean up
     rm /firstrun
