@@ -1,0 +1,20 @@
+# LPAR2RRD load
+*/20 * * * * /home/lpar2rrd/lpar2rrd/load.sh > /home/lpar2rrd/lpar2rrd/logs/load.out 2>&1
+
+# STOR2RRD GUI
+*/20 * * * * /home/lpar2rrd/stor2rrd/load.sh > /home/lpar2rrd/stor2rrd/logs/load.out 2>&1
+
+# STOR2RRD DS8000
+#*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds8perf.sh > /home/lpar2rrd/stor2rrd/load_ds8perf.out
+
+# STOR2RRD SVC/Storwize/Flash V9000
+#*/5 * * * * /home/lpar2rrd/stor2rrd/load_svcperf.sh > /home/lpar2rrd/stor2rrd/load_svcperf.out
+
+# STOR2RRD DS500/DS4000/DS3000
+#*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds5perf.sh > /home/lpar2rrd/stor2rrd/load_ds5perf.out
+
+# STOR2RRD XIV
+#*/10 * * * * /home/stor2rrd/lpar2rrd/load_xivperf.sh > /home/lpar2rrd/stor2rrd/load_xivperf.out
+
+# STOR2RRD SAN
+#* * * * * /home/lpar2rrd/stor2rrd/load_sanperf.sh >/home/lpar2rrd/stor2rrd/logs/load_sanperf.out 2>&1
