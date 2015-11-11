@@ -15,7 +15,7 @@ then
     # a2ensite default-ssl
     # a2enmod ssl
 
-    # Stopping ALL services so data can be moved if needed
+    # Stopping ALL services
     /etc/init.d/apache2 stop
     /etc/init.d/rsyslog stop
 
@@ -33,7 +33,8 @@ then
     # set DOCKER env var
     echo "export DOCKER=1" >> /home/lpar2rrd/lpar2rrd/etc/.magic
 
-    # enable timezone change via GUI
+    # set default TZ to London, enable TZ change via GUI
+    echo "Europe/London" > /etc/timezone
     chmod 666 /etc/timezone
 
     # clean up

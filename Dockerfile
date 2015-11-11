@@ -6,16 +6,16 @@ FROM       debian:wheezy
 MAINTAINER jirka@dutka.net
 
 ENV HOSTNAME XoruX
-ENV VM_IMAGE docker
+ENV VM_IMAGE 1
 ENV DEBIAN_FRONTEND noninteractive
 
 # create file to see if this is the firstrun when started
 RUN touch /firstrun
 
-RUN apt-get update && apt-get dist-upgrade -y 
+RUN apt-get update && apt-get dist-upgrade -y
 
 # install nesessary apps and libs
-RUN apt-get update && apt-get install -yq\
+RUN apt-get update && apt-get install -yq \
     wget \
     supervisor \
     apache2 \
@@ -25,17 +25,13 @@ RUN apt-get update && apt-get install -yq\
     libxml-simple-perl \
     libxml-libxml-perl \
     libcrypt-ssleay-perl \
+    net-tools \
     openssh-client \
     openssh-server \
     vim \
     rsyslog \
     sudo \
     less
-
-#COPY *-setup.sh /
-#COPY configs/spamassassin /etc/spamassasin
-#RUN wget http://sourceforge.net/projects/postfixadmin/files/latest/download?source=files -O /postfixadmin.tgz
-#RUN chown -R www-data.www-data /var/www
 
 # Cleanup
 RUN apt-get clean
