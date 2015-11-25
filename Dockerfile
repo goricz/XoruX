@@ -63,7 +63,7 @@ ENV STOR_VER 1.21
 ADD lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
 ADD stor2rrd-$STOR_VER.tar /home/stor2rrd/
 
-EXPOSE 80 443 8162
+EXPOSE 22 80 443 8162
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

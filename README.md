@@ -12,5 +12,3 @@ Quick start:
  - continue to LPAR2RRD or STOR2RRD, use monitor/monitor as username/password
 
 You can connect via SSH on port 22 (exposed), username **lpar2rrd**, password **xorux4you** - please change it ASAP.
-
-> Written with [StackEdit](https://stackedit.io/).
