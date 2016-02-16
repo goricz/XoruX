@@ -60,11 +60,14 @@ RUN chown -R www-data.www-data /var/www
 ENV LPAR_VER 4.84
 ENV STOR_VER 1.24
 
-# ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_VER/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
-# ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_VER/stor2rrd-$STOR_VER.tar /home/stor2rrd/
+ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_VER/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
+ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_VER/stor2rrd-$STOR_VER.tar /home/stor2rrd/
 
-ADD dist/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
-ADD dist/stor2rrd-$STOR_VER.tar /home/stor2rrd/
+WORKDIR /home/lpar2rrd
+RUN tar xvf lpar2rrd-$LPAR_VER.tar
+
+WORKDIR /home/stor2rrd
+RUN tar xvf stor2rrd-$STOR_VER.tar
 
 EXPOSE 22 80 443 8162
 
