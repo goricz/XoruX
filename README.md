@@ -5,7 +5,7 @@ This docker image is based on official [Debian 7 (Wheezy)](https://hub.docker.co
 
 Quick start:
 
-    docker run -d -p 80:80 xorux/products
+    docker run -d -p 80:80 xorux/apps
 
  - web GUI on http://localhost
  - set timezone for running container
