@@ -27,8 +27,8 @@ then
     su - lpar2rrd -c "cd /home/stor2rrd/stor2rrd-$STOR_VER/; yes '' | ./install.sh"
     rm -r /home/lpar2rrd/lpar2rrd-$STOR_VER
 
-    mv /home/lpar2rrd/tz.pl /home/lpar2rrd/lpar2rrd/bin/tz.pl
-    chown lpar2rrd /home/lpar2rrd/lpar2rrd/bin/tz.pl
+    # mv /home/lpar2rrd/tz.pl /home/lpar2rrd/lpar2rrd/bin/tz.pl
+    # chown lpar2rrd /home/lpar2rrd/lpar2rrd/bin/tz.pl
 
     # enable LPAR2RRD daemon on default port (8162)
     sed -i "s/LPAR2RRD_AGENT_DAEMON\=0/LPAR2RRD_AGENT_DAEMON\=1/g" /home/lpar2rrd/lpar2rrd/etc/lpar2rrd.cfg

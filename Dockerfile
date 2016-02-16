@@ -57,8 +57,8 @@ ADD www.tar.gz /var/
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER 4.81
-ENV STOR_VER 1.21
+ENV LPAR_VER 4.84
+ENV STOR_VER 1.24
 
 ADD lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
 ADD stor2rrd-$STOR_VER.tar /home/stor2rrd/
@@ -71,7 +71,8 @@ COPY configs/crontab /var/spool/cron/crontabs/lpar2rrd
 RUN chmod 600 /var/spool/cron/crontabs/lpar2rrd && chown lpar2rrd.crontab /var/spool/cron/crontabs/lpar2rrd
 
 # patch for timezone settings - remove with next version
-COPY patches/tz.pl /home/lpar2rrd/
+# COPY patches/tz.pl /home/lpar2rrd/
+# COPY patches/lpar2rrd-4.81-006.tar /home/lpar2rrd/
 
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
