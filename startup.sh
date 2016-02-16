@@ -25,7 +25,7 @@ then
     su - lpar2rrd -c "cd /home/lpar2rrd/lpar2rrd-$LPAR_VER/; yes '' | ./install.sh"
     rm -r /home/lpar2rrd/lpar2rrd-$LPAR_VER
     su - lpar2rrd -c "cd /home/stor2rrd/stor2rrd-$STOR_VER/; yes '' | ./install.sh"
-    rm -r /home/lpar2rrd/lpar2rrd-$STOR_VER
+    rm -r /home/lpar2rrd/stor2rrd-$STOR_VER
 
     # mv /home/lpar2rrd/tz.pl /home/lpar2rrd/lpar2rrd/bin/tz.pl
     # chown lpar2rrd /home/lpar2rrd/lpar2rrd/bin/tz.pl
