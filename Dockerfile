@@ -57,8 +57,8 @@ ADD www.tar.gz /var/
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER 4.84
-ENV STOR_VER 1.24
+ENV LPAR_VER 4.85
+ENV STOR_VER 1.25
 
 ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_VER/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
 ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_VER/stor2rrd-$STOR_VER.tar /home/stor2rrd/
