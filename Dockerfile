@@ -57,28 +57,27 @@ ADD www.tar.gz /var/
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER 4.85
-ENV STOR_VER 1.25
+ENV LPAR_VER 4.90
+ENV STOR_VER 1.30
 
+# download tarballs from SF
 ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_VER/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
 ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_VER/stor2rrd-$STOR_VER.tar /home/stor2rrd/
 
+# extract tarballs
 WORKDIR /home/lpar2rrd
 RUN tar xvf lpar2rrd-$LPAR_VER.tar
 
 WORKDIR /home/stor2rrd
 RUN tar xvf stor2rrd-$STOR_VER.tar
 
+# expose ports for SSH, HTTP, HTTPS and LPAR2RRD daemon
 EXPOSE 22 80 443 8162
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY configs/crontab /var/spool/cron/crontabs/lpar2rrd
 RUN chmod 600 /var/spool/cron/crontabs/lpar2rrd && chown lpar2rrd.crontab /var/spool/cron/crontabs/lpar2rrd
-
-# patch for timezone settings - remove with next version
-# COPY patches/tz.pl /home/lpar2rrd/
-# COPY patches/lpar2rrd-4.81-006.tar /home/lpar2rrd/
 
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
