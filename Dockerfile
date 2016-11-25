@@ -6,7 +6,7 @@ FROM       debian:wheezy
 MAINTAINER jirka@dutka.net
 
 ENV HOSTNAME XoruX
-ENV VM_IMAGE 1
+ENV VI_IMAGE 1
 ENV DEBIAN_FRONTEND noninteractive
 
 # create file to see if this is the firstrun when started
