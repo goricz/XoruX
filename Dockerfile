@@ -25,8 +25,11 @@ RUN apt-get update && apt-get install -yq \
     libxml-simple-perl \
     libxml-libxml-perl \
     libcrypt-ssleay-perl \
-	libpdf-api2-perl \
+    libpdf-api2-perl \
     net-tools \
+    snmp \
+    libsnmp-perl \
+    snmp-mibs-downloader \
     openssh-client \
     openssh-server \
     vim \
