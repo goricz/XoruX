@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # create file to see if this is the firstrun when started
 RUN touch /firstrun
+RUN echo "deb http://ftp.debian.org/debian wheezy main non-free" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get dist-upgrade -y
 
@@ -28,6 +29,7 @@ RUN apt-get update && apt-get install -yq \
     libpdf-api2-perl \
     net-tools \
     snmp \
+    snmp-mibs-downloader \
     libsnmp-perl \
     openssh-client \
     openssh-server \
