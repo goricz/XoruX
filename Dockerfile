@@ -29,7 +29,6 @@ RUN apt-get update && apt-get install -yq \
     net-tools \
     snmp \
     libsnmp-perl \
-    snmp-mibs-downloader \
     openssh-client \
     openssh-server \
     vim \
