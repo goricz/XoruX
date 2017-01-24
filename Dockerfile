@@ -29,6 +29,8 @@ RUN apt-get update && apt-get install -yq \
     libcrypt-ssleay-perl \
     libpdf-api2-perl \
     net-tools \
+    libxml2-utils \
+    sharutils \
     snmp \
     snmp-mibs-downloader \
     libsnmp-perl \
