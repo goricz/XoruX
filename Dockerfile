@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # create file to see if this is the firstrun when started
 RUN touch /firstrun
+# add non-free debian sources
 RUN echo "deb http://ftp.debian.org/debian wheezy main non-free" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get dist-upgrade -y
