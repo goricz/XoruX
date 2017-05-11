@@ -65,10 +65,10 @@ ADD www.tar.gz /var/
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER_MAJ "4.95"
-ENV LPAR_VER_MIN "-4"
-ENV STOR_VER_MAJ "1.35"
-ENV STOR_VER_MIN "-1"
+ENV LPAR_VER_MAJ "5.00"
+ENV LPAR_VER_MIN ""
+ENV STOR_VER_MAJ "2.00"
+ENV STOR_VER_MIN ""
 
 ENV LPAR_VER "$LPAR_VER_MAJ$LPAR_VER_MIN"
 ENV STOR_VER "$STOR_VER_MAJ$STOR_VER_MIN"
@@ -94,6 +94,9 @@ RUN chmod 600 /var/spool/cron/crontabs/lpar2rrd && chown lpar2rrd.crontab /var/s
 
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
+COPY tz.pl /usr/lib/cgi-bin/tz.pl
+RUN chmod +x /usr/lib/cgi-bin/tz.pl
+COPY index.html /var/www/
 
 ENTRYPOINT [ "/startup.sh" ]
 

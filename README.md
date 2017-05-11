@@ -9,6 +9,7 @@ Quick start:
 
  - web GUI on http://localhost
  - set timezone for running container
- - continue to LPAR2RRD or STOR2RRD, use monitor/monitor as username/password
+ - continue to LPAR2RRD and use admin/admin as username/password
+ - or continue to STOR2RRD and use monitor/monitor as username/password
 
 You can connect via SSH on port 22 (exposed), username **lpar2rrd**, password **xorux4you** - please change it ASAP.

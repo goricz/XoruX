@@ -39,6 +39,10 @@ then
     echo "Europe/London" > /etc/timezone
     chmod 666 /etc/timezone
 
+    # copy .htaccess files for ACL
+    cp -p /home/lpar2rrd/lpar2rrd/html/.htaccess /home/lpar2rrd/lpar2rrd/www
+    cp -p /home/lpar2rrd/lpar2rrd/html/.htaccess /home/lpar2rrd/lpar2rrd/lpar2rrd-cgi
+
     # clean up
     rm /firstrun
 fi

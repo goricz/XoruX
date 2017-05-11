@@ -1,20 +1,60 @@
-# LPAR2RRD load
+#  LPAR2RRD
+######################################################
+
+# GUI
 */20 * * * * /home/lpar2rrd/lpar2rrd/load.sh > /home/lpar2rrd/lpar2rrd/logs/load.out 2>&1
 
-# STOR2RRD GUI
-*/20 * * * * /home/lpar2rrd/stor2rrd/load.sh > /home/lpar2rrd/stor2rrd/logs/load.out 2>&1
+# HMC agent (it collects HMC utilization itself : CPU/Mem/paging)
+*/5 * * * * . /home/lpar2rrd/lpar2rrd/etc/lpar2rrd.cfg; /usr/bin/perl /opt/lpar2rrd-agent/lpar2rrd-agent.pl -c localhost > /var/tmp/lpar2rrd-agent-hmc.out 2>/var/tmp/lpar2rrd-agent-hmc.err 
 
-# STOR2RRD DS8000
-#*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds8perf.sh > /home/lpar2rrd/stor2rrd/load_ds8perf.out
+#  STOR2RRD
+######################################################
 
-# STOR2RRD SVC/Storwize/Flash V9000
-#*/5 * * * * /home/lpar2rrd/stor2rrd/load_svcperf.sh > /home/lpar2rrd/stor2rrd/load_svcperf.out
+# GUI
+03,23,43 * * * * /home/lpar2rrd/stor2rrd/load.sh > /home/lpar2rrd/stor2rrd/logs/load.out 2>&1
 
-# STOR2RRD DS500/DS4000/DS3000
-#*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds5perf.sh > /home/lpar2rrd/stor2rrd/load_ds5perf.out
+# IBM DS8000 storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds8perf.sh > /home/lpar2rrd/stor2rrd/load_ds8perf.out 2>&1
 
-# STOR2RRD XIV
-#*/10 * * * * /home/stor2rrd/lpar2rrd/load_xivperf.sh > /home/lpar2rrd/stor2rrd/load_xivperf.out
+# IBM SVC/Storwize/Flash storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_svcperf.sh > /home/lpar2rrd/stor2rrd/load_svcperf.out 2>&1
 
-# STOR2RRD SAN
-#* * * * * /home/lpar2rrd/stor2rrd/load_sanperf.sh >/home/lpar2rrd/stor2rrd/logs/load_sanperf.out 2>&1
+# DS500/DS4000/DS3000/DCS3700 & NetApp E-series storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_ds5perf.sh > /home/lpar2rrd/stor2rrd/load_ds5perf.out 2>&1
+
+# IBM XIV storage agent
+*/10 * * * * /home/lpar2rrd/stor2rrd/load_xivperf.sh > /home/lpar2rrd/stor2rrd/load_xivperf.out 2>&1
+
+# Hitachi HUS and AMS 2000 storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_husperf.sh > /home/lpar2rrd/stor2rrd/load_husperf.out 2>&1
+
+# HPE 3PAR storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_3parperf.sh > /home/lpar2rrd/stor2rrd/load_3parperf.out 2>&1
+
+# NetApp storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_netappperf.sh > /home/lpar2rrd/stor2rrd/load_netappperf.out 2>&1
+
+# Hitachi VSP-G  & HPE XP7 storage agent
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_vspgperf.sh > /home/lpar2rrd/stor2rrd/load_vspgperf.out 2>&1
+
+# EMC VMAX
+*/5 * * * * /home/stor2rrd/stor2rrd/load_vmaxperf.sh > /home/stor2rrd/stor2rrd/load_vmaxperf.out 2>&1
+
+# EMC VNX block
+*/5 * * * * /home/stor2rrd/stor2rrd/load_vnxperf.sh > /home/stor2rrd/stor2rrd/load_vnxperf.out 2>&1
+
+# EMC VNX file
+*/5 * * * * /home/stor2rrd/stor2rrd/load_vnxfperf.sh > /home/stor2rrd/stor2rrd/load_vnxfperf.out 2>&1
+
+# EMC VNXe
+*/5 * * * * /home/stor2rrd/stor2rrd/load_vnxeperf.sh > /home/stor2rrd/stor2rrd/load_vnxeperf.out 2>&1
+
+# EMC Unity
+*/5 * * * * /home/stor2rrd/stor2rrd/load_unityperf.sh > /home/stor2rrd/stor2rrd/load_unityperf.out 2>&1
+
+# Dot Hill AssuredSAN and its rebrands like Lenovo S2200 or HPE MSA2000/P2000
+*/5 * * * * /home/stor2rrd/stor2rrd/load_dothillperf.sh > /home/stor2rrd/stor2rrd/load_dothillperf.out
+
+
+# SAN (Brocade + Cisco + Qlogic)
+* * * * * /home/lpar2rrd/stor2rrd/load_sanperf.sh >/home/lpar2rrd/stor2rrd/logs/load_sanperf.out 2>&1
