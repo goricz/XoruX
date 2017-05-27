@@ -65,17 +65,19 @@ ADD www.tar.gz /var/
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER_MAJ "5.00"
+ENV LPAR_VER_MAJ "5.01"
 ENV LPAR_VER_MIN ""
-ENV STOR_VER_MAJ "2.00"
+ENV LPAR_SF_DIR "5.00"
+ENV STOR_VER_MAJ "2.01"
 ENV STOR_VER_MIN ""
+ENV STOR_SF_DIR "2.00"
 
 ENV LPAR_VER "$LPAR_VER_MAJ$LPAR_VER_MIN"
 ENV STOR_VER "$STOR_VER_MAJ$STOR_VER_MIN"
 
 # download tarballs from SF
-ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_VER_MAJ/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
-ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_VER_MAJ/stor2rrd-$STOR_VER.tar /home/stor2rrd/
+ADD http://downloads.sourceforge.net/project/lpar2rrd/lpar2rrd/$LPAR_SF_DIR/lpar2rrd-$LPAR_VER.tar /home/lpar2rrd/
+ADD http://downloads.sourceforge.net/project/stor2rrd/stor2rrd/$STOR_SF_DIR/stor2rrd-$STOR_VER.tar /home/stor2rrd/
 
 # extract tarballs
 WORKDIR /home/lpar2rrd
