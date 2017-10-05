@@ -2,10 +2,13 @@
 ######################################################
 
 # GUI
-*/20 * * * * /home/lpar2rrd/lpar2rrd/load.sh > /home/lpar2rrd/lpar2rrd/logs/load.out 2>&1
+*/30 * * * * /home/lpar2rrd/lpar2rrd/load.sh > /home/lpar2rrd/lpar2rrd/logs/load.out 2>&1
 
 # HMC agent (it collects HMC utilization itself : CPU/Mem/paging)
 */5 * * * * . /home/lpar2rrd/lpar2rrd/etc/lpar2rrd.cfg; /usr/bin/perl /opt/lpar2rrd-agent/lpar2rrd-agent.pl -c localhost > /var/tmp/lpar2rrd-agent-hmc.out 2>/var/tmp/lpar2rrd-agent-hmc.err 
+
+# Alerting - HMC data source
+*/10 * * * * /home/lpar2rrd/lpar2rrd/load_alert.sh > /home/lpar2rrd/lpar2rrd/load_alert.out 2>&1
 
 #  STOR2RRD
 ######################################################
@@ -55,6 +58,18 @@
 # Dot Hill AssuredSAN and its rebrands like Lenovo S2200 or HPE MSA2000/P2000
 */5 * * * * /home/stor2rrd/stor2rrd/load_dothillperf.sh > /home/stor2rrd/stor2rrd/load_dothillperf.out
 
+# Dell SC series (Compellent)
+*/5 * * * * /home/stor2rrd/stor2rrd/load_compellentperf.sh > /home/stor2rrd/stor2rrd/load_compellentperf.out 2>&1
 
-# SAN (Brocade + Cisco + Qlogic)
-* * * * * /home/lpar2rrd/stor2rrd/load_sanperf.sh >/home/lpar2rrd/stor2rrd/logs/load_sanperf.out 2>&1
+# Huawei OceanStor
+*/5 * * * * /home/stor2rrd/stor2rrd/load_oceanstor.sh > /home/stor2rrd/stor2rrd/load_oceanstor.out 2>&1
+
+# EMC VPLEX
+*/5 * * * * /home/stor2rrd/stor2rrd/load_vplexperf.sh > /home/stor2rrd/stor2rrd/load_vplexperf.out 2>&1
+
+# SAN (Brocade + Cisco + QLogic)
+*/5 * * * * /home/lpar2rrd/stor2rrd/load_sanperf.sh >/home/lpar2rrd/stor2rrd/logs/load_sanperf.out 2>&1
+
+# BNA agent
+*/10 * * * * /home/stor2rrd/stor2rrd/load_bnaperf.sh >/home/stor2rrd/stor2rrd/logs/load_bnaperf.out 2>&1
+
