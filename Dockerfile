@@ -2,7 +2,7 @@
 #
 # VERSION               1.0
 
-FROM       debian:wheezy
+FROM       debian:jessie
 MAINTAINER jirka@dutka.net
 
 ENV HOSTNAME XoruX
@@ -12,12 +12,12 @@ ENV DEBIAN_FRONTEND noninteractive
 # create file to see if this is the firstrun when started
 RUN touch /firstrun
 # add non-free debian sources
-RUN echo "deb http://ftp.debian.org/debian wheezy main non-free" >> /etc/apt/sources.list
+RUN echo "deb http://ftp.debian.org/debian jessie main non-free" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get dist-upgrade -y
 
 # install nesessary apps and libs
-RUN apt-get update && apt-get install -yq \
+RUN apt-get install -yq \
     wget \
     supervisor \
     apache2 \
@@ -61,15 +61,15 @@ COPY configs/apache2/htpasswd /etc/apache2/conf/
 RUN sed -i 's/^export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=lpar2rrd/g' /etc/apache2/envvars
 
 # adding web root
-ADD www.tar.gz /var/
+ADD html.tar.gz /var/www
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
 ENV LPAR_VER_MAJ "5.07"
 ENV LPAR_VER_MIN ""
 ENV LPAR_SF_DIR "5.07"
-ENV STOR_VER_MAJ "2.30"
-ENV STOR_VER_MIN ""
+ENV STOR_VER_MAJ "2.31"
+ENV STOR_VER_MIN "-1"
 ENV STOR_SF_DIR "2.30"
 
 ENV LPAR_VER "$LPAR_VER_MAJ$LPAR_VER_MIN"

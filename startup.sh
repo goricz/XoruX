@@ -14,6 +14,7 @@ then
     a2ensite lpar2rrd.conf stor2rrd.conf
     # a2ensite default-ssl
     # a2enmod ssl
+	a2enmod cgid
 
     # Stopping ALL services
     /etc/init.d/apache2 stop
@@ -55,5 +56,7 @@ if [ -f /var/run/rsyslogd.pid ]
     then rm /var/run/rsyslogd.pid
 fi
 
+# run apache2ctl to create missing dirs
+/usr/sbin/apache2ctl configtest > /dev/null
 # Start supervisor to start the services
 /usr/bin/supervisord
