@@ -1,6 +1,6 @@
 #!/usr/bin/docker build .
 #
-# VERSION               1.0
+# VERSION               2.32
 
 FROM       debian:jessie
 MAINTAINER jirka@dutka.net
@@ -65,10 +65,10 @@ ADD html.tar.gz /var/www
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER_MAJ "6.00"
+ENV LPAR_VER_MAJ "6.02"
 ENV LPAR_VER_MIN ""
 ENV LPAR_SF_DIR "6.00"
-ENV STOR_VER_MAJ "2.50"
+ENV STOR_VER_MAJ "2.52"
 ENV STOR_VER_MIN ""
 ENV STOR_SF_DIR "2.50"
 
