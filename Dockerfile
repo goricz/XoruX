@@ -26,6 +26,7 @@ RUN apt-get install -yq \
     librrdp-perl \
     libxml-simple-perl \
     libxml-libxml-perl \
+    liblwp-protocol-https-perl=6.04-2 \
     libcrypt-ssleay-perl \
     libpdf-api2-perl \
     net-tools \
