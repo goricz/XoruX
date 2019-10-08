@@ -1,6 +1,6 @@
 #!/usr/bin/docker build .
 #
-# VERSION               2.32
+# VERSION               2.40
 
 FROM       debian:jessie
 MAINTAINER jirka@dutka.net
@@ -26,7 +26,8 @@ RUN apt-get install -yq \
     librrdp-perl \
     libxml-simple-perl \
     libxml-libxml-perl \
-    liblwp-protocol-https-perl=6.04-2 \
+    # liblwp-protocol-https-perl=6.04-2 \
+    liblwp-protocol-https-perl \
     libcrypt-ssleay-perl \
     libpdf-api2-perl \
     net-tools \
@@ -66,12 +67,12 @@ ADD html.tar.gz /var/www
 RUN chown -R www-data.www-data /var/www
 
 # add product installations
-ENV LPAR_VER_MAJ "6.02"
+ENV LPAR_VER_MAJ "6.10"
 ENV LPAR_VER_MIN ""
-ENV LPAR_SF_DIR "6.00"
-ENV STOR_VER_MAJ "2.52"
+ENV LPAR_SF_DIR "6.10"
+ENV STOR_VER_MAJ "2.60"
 ENV STOR_VER_MIN ""
-ENV STOR_SF_DIR "2.50"
+ENV STOR_SF_DIR "2.60"
 
 ENV LPAR_VER "$LPAR_VER_MAJ$LPAR_VER_MIN"
 ENV STOR_VER "$STOR_VER_MAJ$STOR_VER_MIN"
