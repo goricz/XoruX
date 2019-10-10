@@ -1,4 +1,9 @@
 # XoruX Docker Image
+
+**Note:** This repo is archived, recent version based on Alpine Linux is here: https://github.com/XoruX/apps-docker
+
+---
+
 This is the Git repo of the Docker image for [XoruX](https://www.xorux.com) applications - [LPAR2RRD](http://www.lpar2rrd.com) & [STOR2RRD](http://www.stor2rrd.com).
 
 This docker image is based on official [Debian 8 (Jessie)](https://hub.docker.com/_/debian) with all necessary dependencies installed.
